@@ -18,29 +18,30 @@ class StraemliSwhow():
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    champions = soup.find('div', class_='style__List-sc-13btjky-2').find_all('a')
+    champions = soup.find('div', class_='sc-e560e08e-0 hPhkGD').find_all('a')
     img = 'https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt570145160dd39dca/5db05fa8347d1c6baa57be25/RiotX_ChampionList_aatrox.jpg?quality=90&width=250'
 
     # Show sidebar
     def show_sidebar(self):
         # Sidebar
         st.sidebar.title("Kevin Duranty")
-        st.sidebar.image("https://www.leagueoflegends.com/static/logo-1200-04b3cefafba917c9c571f9244fd28a1e.png")
+        st.sidebar.image("https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/9eb028de391e65072d06e77f06d0955f66b9fa2c-736x316.png?auto=format&fit=fill&q=80&w=552")
         st.sidebar.subheader("Description de l'application")
         st.sidebar.markdown("Cette application permet de collecter des données du site League of Legends et de discuter avec un bot expert du jeu.")
         st.sidebar.link_button("Lien vers le site", "https://www.leagueoflegends.com/fr-fr/")
 
 
     def get_champion_info(self, champion):
-                name = champion.find('span', 'style__Name-sc-n3ovyt-2').text
-                img = champion.find('img').get('src')
+                name = champion.find('span').text
+                
                 
                 champion_link = self.url + champion.get('href').split('/')[-2]
                 
                 response_champion = requests.get(champion_link)
                 soup_champion = BeautifulSoup(response_champion.text, "html.parser")
-                desciption = soup_champion.find('div', 'style__Desc-sc-8gkpub-9 jheTpK').text
-                role = soup_champion.find('div', 'style__SpecsItemValue-sc-8gkpub-15').text
+                desciption = soup_champion.find('div', 'sc-4225abdc-0 lnNUuw').text
+                role = soup_champion.find('div', 'character-meta-box').text
+                img = soup_champion.find('div', 'sc-cf6885cf-0 dfGzkK media-viewport').find('img').get('src')
 
                 return name, img, desciption, role, champion_link
     
