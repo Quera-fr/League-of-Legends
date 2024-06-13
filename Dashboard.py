@@ -6,7 +6,7 @@ st.set_page_config(page_title="Leag of Legends Dashboard",
                    layout="wide")
 
 st.title("League of Legends Dashboard")
-st.video("https://www.leagueoflegends.com/static/hero-c35bd03ceaa5f919e98b20c905044a3d.webm", start_time=0, format='video/webm')
+st.video("https://cmsassets.rgpub.io/sanity/files/dsfx7636/news/8ab3e227121c53aacab0c9b9f7a48adbc65db520.webm", start_time=0, format='video/webm')
 
 # Afficher la sidebar
 streamlit_lol.show_sidebar()
